@@ -1,0 +1,65 @@
+ ;Starting scene...
+
+ @showUI ContinueInputUI
+
+ ;Changing to black 
+
+ @back black.Crossfade id:MagicMePart4 time:0.5
+
+ ;Custom save and start since this place
+;  @customSave - commented this script because I haven't saveModal
+
+ ;Waiting 0.25s
+
+ @wait 0.25
+
+ ;Changing to Location
+
+@back The-essay-with-a-coffee-spill-oxer-it-as-mia-stares-at-in-shock.Crossfade id:MagicMePart4 time:0.5
+
+ ;Mia - User, Adam, Harmony, Neo
+
+ ;offset - зміщення
+@camera offset:0.15,0 time:0.2
+ ;pos - position to x,y
+ ;scale - маштаб змінення актора
+@char {G_playerVisual}.default pos:20,-10 scale:0.9,0.9,1 time:0
+@camera offset:0.15,0 time:0.2 wait:false
+@char {G_playerVisual}.default pos:42,0 scale:0.9,0.9,1 time:0.3
+@printer BubbleLeft pos:50,45
+@print "Are you insane?!" author:{G_playerName} reset:true speed:20
+@hidePrinter BubbleLeft
+@char {G_playerVisual}.default pos:20,-10 scale:0.9,0.9,1 time:0.2 wait:false
+
+
+
+@char harmony.default pos:80,-10 scale:0.9,0.9,1 time:0
+@camera offset:-0.15,0 time:0.2 wait:false
+@char harmony.snickers pos:58,-10 scale:0.9,0.9,1 time:0.2
+@printer BubbleRight pos:50,45
+@print "Oopsie. Sorry about that." author:harmony reset:true
+@hidePrinter BubbleRight
+@char harmony.default pos:80,-10 scale:0.9,0.9,1 time:0.2
+
+
+
+@char neo.default pos:80,-10 scale:0.9,0.9,1 time:0
+@camera offset:-0.15,0 time:0.2 wait:false
+@char neo.default pos:58,-10 scale:0.9,0.9,1 time:0.2
+@printer BubbleRight pos:50,45
+@print "That's a bummer. I guess you' ll have to rewrite it, though I wouldn't bother if I were you. Your essay has no scientific value anyway." author:neo reset:true
+@hidePrinter BubbleRight
+@char neo.default pos:80,-10 scale:0.9,0.9,1 time:0.2
+
+
+
+
+@char adam.default pos:80,-10 scale:0.9,0.9,1 time:0
+@camera offset:-0.15,0 time:0.2 wait:false
+@char adam.default pos:58,-10 scale:0.9,0.9,1 time:0.2
+@printer BubbleRight pos:50,45
+@print "{G_playerName}, what's going on?" author:adam reset:true
+@hidePrinter BubbleRight
+@char adam.default pos:80,-10 scale:0.9,0.9,1 time:0.2
+
+
