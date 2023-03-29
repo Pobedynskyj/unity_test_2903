@@ -1,1 +1,2 @@
-# unity_test_2903
+# This is my first practic with unity scripts.
+Test task for app Magic Me
