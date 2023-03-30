@@ -143,10 +143,6 @@
 
 ;Magic-1
 
-@printer AutoText pos:50,45
-@print "-1 Magic" reset:true speed:20
-@hidePrinter AutoText
-
 @spawn Magic 		
 @set G_MagicMe_Magic-=1
 @wait 5
@@ -157,8 +153,7 @@
 
 @goto .Int-classroom-adam's-desc
 
-
-;Choice 1_1
+;Choice 1_2
 
 #MagicMePart4_Choice1_2
 
@@ -183,6 +178,8 @@
 @hidePrinter AutoText
 
 
+
+
 ;Printer choice 2
 
 @printer Chat
@@ -190,6 +187,8 @@
 @choice handler:ChatReply "Make Harmony apologize (you need +5 Magic)." set:G_MagicMePart4_choses02=1 do:"@hidePrinter Chat" goto:.MagicMePart4_Choice2_1
 @choice handler:ChatReply "Ask for extra time to rewrite the essay." set:G_MagicMePart4_choses02=2 do:"@hidePrinter Chat" goto:.MagicMePart4_Choice2_2
 @stop
+
+
 
 ;Choice 2_1
 
@@ -304,6 +303,8 @@
 @hidePrinter BubbleLeft
 @char {G_playerVisual}.default pos:20,-10 scale:0.9,0.9,1 time:0.2 
 
+@goto .Int-classroom-adam's-desc
+
 
 ;Choice 2_2
 
@@ -354,9 +355,7 @@
 
 ; Magic +1
 
-@printer AutoText pos:50,45
-@print "+1 Magic" reset:true speed:20
-@hidePrinter AutoText
+@goto .Int-classroom-adam's-desc
 
 @spawn Magic 		
 @set G_MagicMe_Magic-=1
@@ -364,6 +363,8 @@
 @despawn Magic		
 
 ; next location classroom
+
+#Int-clasroom-adam's-desc
 
 
 @back black.Crossfade id:MAgicMePart4 time:0.5
@@ -471,6 +472,8 @@
 @endIf
 
 
+
+
 @char adam.default pos:80,-10 scale:0.9,0.9,1 time:0
 @camera offset:-0.15,0 time:0.2 wait:false
 @char adam.default pos:58,-10 scale:0.9,0.9,1 time:0.2
@@ -534,6 +537,8 @@
 @print "I suggest we meet at Green Square Cafe here on campus. I'd be happy to tell you a bit about my scientific discoveries...and learn more about your plans with regard to science and learning." author:adam reset:true
 @hidePrinter BubbleRight
 @char adam.default pos:80,-10 scale:0.9,0.9,1 time:0.2
+
+
 
 
 ;Printer choice 3
@@ -618,6 +623,8 @@
 @printer AutoText pos:50,45
 @print "ADAM IS GRATEFUL FOR YOUR TRUST" reset:true speed:20
 @hidePrinter AutoText
+
+@goto Dina's-room
 
 ; Choice 3_2
 
@@ -730,7 +737,11 @@
 @print "ADAM REALIZES YOU DON'T TRUST HIM" reset:true speed:20
 @hidePrinter AutoText
 
+@goto Dina's-room
+
 ; next location dina's room
+
+#Dina's-room
 
 
 @back black.Crossfade id:MAgicMePart4 time:0.5
@@ -779,6 +790,8 @@
 @hidePrinter BubbleRight
 @char dina.amazed pos:80,-10 scale:0.9,0.9,1 time:0.2
 
+@goto Green-square-cafe-night
+
 ; if choice 2_1
 
 @elseIf G_MagicMePart4_choses02=1
@@ -799,6 +812,8 @@
 @print "Wow, girl! It's your first day of college, and you've already snatched up the most handsome prof of all!" author:dina reset:true
 @hidePrinter BubbleRight
 @char dina.amazed pos:80,-10 scale:0.9,0.9,1 time:0.2
+
+@goto Green-square-cafe-night
 
 ; if choice 2_2
 
@@ -921,7 +936,11 @@
 @hidePrinter BubbleRight
 @char dina.smiles pos:80,-10 scale:0.9,0.9,1 time:0.2
 
+@goto Green-square-cafe-night
+
 ; next location green square cafe - night
+
+#Green-square-cafe-night
 
 
 @back black.Crossfade id:MAgicMePart4 time:0.5
@@ -1213,10 +1232,6 @@
 
 ; Magic +1
 
-@printer AutoText pos:50,45
-@print "+1 Magic" reset:true speed:20
-@hidePrinter AutoText
-
 @spawn Magic 		
 @set G_MagicMe_Magic+=1
 @wait 5
@@ -1421,9 +1436,14 @@
 @print "...Then we finished our dinner and went outside." reset:true speed:20
 @hidePrinter AutoText
 
+@endIf
+
+@goto Campus-lawn
+
 
 ; next location campus lawn
 
+#Campus-lawn
 
 @back black.Crossfade id:MAgicMePart4 time:0.5
 
@@ -1489,6 +1509,8 @@
 @hidePrinter BubbleRight
 @char adam.default pos:80,-10 scale:0.9,0.9,1 time:0.2
 
+@goto the-tattoo
+
 
 ; if choice 2_1
 
@@ -1543,6 +1565,8 @@
 @print "No, it's because you have to be gifted to understand this book. I can sense the gift in you, but Neo doesn't have it. "  author:adam reset:true
 @hidePrinter BubbleRight
 @char adam.default pos:80,-10 scale:0.9,0.9,1 time:0.2
+
+@goto the-tattoo
 
 ;  if choice 2_2
 
@@ -1894,7 +1918,7 @@
 
 ; the tattoo
 
-#.the-tattoo
+#the-tattoo
 
 
 @printer AutoText pos:50,45
@@ -2013,6 +2037,8 @@
 @hidePrinter BubbleRight
 @char adam.default pos:80,-10 scale:0.9,0.9,1 time:0.2
 
+@goto Int-dina's-room-night
+
 ; if choice 5_2
 
 @elseIf G_MagicMePart4_choses05=2
@@ -2058,6 +2084,7 @@
 @print "YOU JUST LEARNED SOMETHING IMPORTANT" reset:true speed:20
 @hidePrinter AutoText
 
+@goto Int-dina's-room-night
 
 ; if choice 5_3
 
@@ -2104,6 +2131,10 @@
 @print "YOU JUST LEARNED SOMETHING IMPORTANT" reset:true speed:20
 @hidePrinter AutoText
 
+@endIf
+
+@goto Int-dina's-room-night
+
 ; Choice 6_2
 
 #MagicMePart4_Choice6_2
@@ -2137,8 +2168,12 @@
 @print "YOU WERE POLITE, BUT YOU MISSED LEARNING SOMETHING IMPORTANT" reset:true speed:20
 @hidePrinter AutoText
 
+@goto Int-dina's-room-night
+
 
 ; next location int. dina's room -night
+
+#Int-dina's-room-night
 
 
 @back black.Crossfade id:MAgicMePart4 time:0.5
@@ -2212,6 +2247,7 @@
 @hidePrinter BubbleLeft
 @char {G_playerVisual}.default pos:20,-10 scale:0.9,0.9,1 time:0.2 
 
+@goto Nat-campus-lawn
 
 ; if choice 2_1
 
@@ -2261,6 +2297,7 @@
 @hidePrinter BubbleLeft
 @char {G_playerVisual}.default pos:20,-10 scale:0.9,0.9,1 time:0.2 
 
+@goto Nat-campus-lawn
 
 ; if choice 2_2
 
@@ -2288,8 +2325,11 @@
 @print "...Dina went to bed, and I sat down to rewrite my essay before retiring for the night as well." reset:true speed:20
 @hidePrinter AutoText
 
+@goto Nat-campus-lawn
+
 ; next location nat campus lawn
 
+#Nat-campus-lawn
 
 @back black.Crossfade id:MAgicMePart4 time:0.5
 
@@ -2309,22 +2349,29 @@
 @print "...There was still an hour left before class, and I was enjoying a snack on the lawn when suddenly I heard a familiar voice. No way!" reset:true speed:20
 @hidePrinter AutoText
 
+
+@goto next-location
+
+
 ; if choice 2_1
 
-@if G_MagicMePart4_choses02=1
+@elseIf G_MagicMePart4_choses02=1
 
 @printer AutoText pos:50,45
 @print "...There was still an hour left before class, and I was enjoying a snack on the lawn when suddenly I heard a familiar voice. No way!" reset:true speed:20
 @hidePrinter AutoText
 
+@goto next-location
 
 ; if choice 2_2
 
-@if G_MagicMePart4_choses02=2
+@elseIf G_MagicMePart4_choses02=2
 
 @printer AutoText pos:50,45
 @print "...I handed in my work. There was still an hour left before class, and I was enjoying a snack on the lawn when suddenly I heard a familiar voice. No way!" reset:true speed:20
 @hidePrinter AutoText
+
+@endIf
 
 
 @char {G_playerVisual}.surprised pos:20,-10 scale:0.9,0.9,1 time:0
@@ -2385,10 +2432,10 @@
 @hidePrinter BubbleRight
 @char bobby.default pos:80,-10 scale:0.9,0.9,1 time:0.2
 
-; if choise 001_1 - from part 1 (not from this part)
+; if choise 01_1 - from part 1 (not from this part)
 
 
-@if G_MagicMePart4_choses001=1
+@if G_MagicMePart1_choses01=1
 
 @printer AutoText pos:50,45
 @print "...I was happy to see Bobby, though I hoped we wouldn't have to go back to talking about his feelings for me. But it didn't look like Bobby wanted to talk about it, either." reset:true speed:20
@@ -2403,11 +2450,13 @@
 @hidePrinter BubbleLeft
 @char {G_playerVisual}.default pos:20,-10 scale:0.9,0.9,1 time:0.2
 
+@goto next-location
 
-; if choise 001_2 - from part 1 (not from this part)
+
+; if choise 01_2 - from part 1 (not from this part)
 
 
-@if G_MagicMePart4_choses001=2
+@elseIf G_MagicMePart4_choses01=2
 
 
 @printer AutoText pos:50,45
@@ -2531,6 +2580,11 @@
 
 
 @printer AutoText pos:50,45
-@print "...I opened the bag and took out my breakfast. Then, all of a sudden, I spotted something in my bag that wasn't supposed to be there. Not under any circumstances! 
-...It was the little silver jar with the supposedly magic balm, the one I found in the alchemist's room just before tumbling into the flames..." reset:true speed:20
+@print "...I opened the bag and took out my breakfast. Then, all of a sudden, I spotted something in my bag that wasn't supposed to be there. Not under any circumstances!" reset:true speed:20
 @hidePrinter AutoText
+
+@printer AutoText pos:50,45
+@print "...It was the little silver jar with the supposedly magic balm, the one I found in the alchemist's room just before tumbling into the flames..." reset:true speed:20
+@hidePrinter AutoText
+
+@goto next-location
